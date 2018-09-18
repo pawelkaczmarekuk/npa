@@ -1,0 +1,39 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="documentTask">
+            <h2><span>Document Task</span> {{documentTask.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Input Document Id</span></dt>
+                <dd>
+                    <span>{{documentTask.inputDocumentId}}</span>
+                </dd>
+                <dt><span>Output Document Id</span></dt>
+                <dd>
+                    <span>{{documentTask.outputDocumentId}}</span>
+                </dd>
+                <dt><span>Task State</span></dt>
+                <dd>
+                    <span>{{documentTask.taskState}}</span>
+                </dd>
+                <dt><span>Failure Description</span></dt>
+                <dd>
+                    <span>{{documentTask.failureDescription}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/document-task', documentTask.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

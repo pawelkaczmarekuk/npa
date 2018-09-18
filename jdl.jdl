@@ -1,0 +1,17 @@
+enum TaskState {
+	NEW,
+    IN_PROGRESS,
+    DONE,
+    FAILED
+}
+
+entity DocumentTask {
+	inputDocumentId String
+    outputDocumentId String
+    taskState TaskState
+    failureDescription String
+}
+
+paginate * with pagination
+service * with serviceImpl
+dto * with mapstruct

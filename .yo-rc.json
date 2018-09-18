@@ -1,0 +1,38 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "uk.gov.hmcts.reform.em.npa"
+    },
+    "jhipsterVersion": "5.3.1",
+    "applicationType": "monolith",
+    "baseName": "npa",
+    "packageName": "uk.gov.hmcts.reform.em.npa",
+    "packageFolder": "uk/gov/hmcts/reform/em/npa",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "no",
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "h2Disk",
+    "prodDatabaseType": "postgresql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": false,
+    "buildTool": "gradle",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "YjU1YzU1NjZiYjQxZTZkYWVjODAyMGVhNDg4NmMwNWU5YjU1NGZmYmEzODlkOWQ4N2QxOWY1NTQxYTk5NWU3ODFiMzIxY2Q0YjI4YjQzNWQxNWNhZjFjODM2Y2JjMjM5NGU1MDhkMzk0OTA5NTI4NjE2MDljMzFjNDUwZWU0ZmU=",
+    "clientFramework": "angularX",
+    "useSass": false,
+    "clientPackageManager": "npm",
+    "testFrameworks": [
+      "gatling",
+      "cucumber",
+      "protractor"
+    ],
+    "jhiPrefix": "jhi",
+    "enableTranslation": false
+  },
+  "generator-jhipster-entity-audit": {
+    "auditFramework": "custom"
+  }
+}

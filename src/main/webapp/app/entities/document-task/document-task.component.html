@@ -1,0 +1,68 @@
+<div>
+    <h2 id="page-heading">
+        <span>Document Tasks</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-document-task" [routerLink]="['/document-task/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create new Document Task
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="documentTasks">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span>ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="inputDocumentId"><span>Input Document Id</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="outputDocumentId"><span>Output Document Id</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="taskState"><span>Task State</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="failureDescription"><span>Failure Description</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let documentTask of documentTasks ;trackBy: trackId">
+                <td><a [routerLink]="['/document-task', documentTask.id, 'view' ]">{{documentTask.id}}</a></td>
+                <td>{{documentTask.inputDocumentId}}</td>
+                <td>{{documentTask.outputDocumentId}}</td>
+                <td>{{documentTask.taskState}}</td>
+                <td>{{documentTask.failureDescription}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/document-task', documentTask.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/document-task', documentTask.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'document-task/'+ documentTask.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="documentTasks && documentTasks.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

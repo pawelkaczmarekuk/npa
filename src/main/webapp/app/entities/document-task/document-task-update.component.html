@@ -1,0 +1,48 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-document-task-heading">Create or edit a Document Task</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!documentTask.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="documentTask.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_inputDocumentId">Input Document Id</label>
+                    <input type="text" class="form-control" name="inputDocumentId" id="field_inputDocumentId"
+                        [(ngModel)]="documentTask.inputDocumentId" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_outputDocumentId">Output Document Id</label>
+                    <input type="text" class="form-control" name="outputDocumentId" id="field_outputDocumentId"
+                        [(ngModel)]="documentTask.outputDocumentId" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_taskState">Task State</label>
+                    <select class="form-control" name="taskState" [(ngModel)]="documentTask.taskState" id="field_taskState" >
+                        <option value="NEW">NEW</option>
+                        <option value="IN_PROGRESS">IN_PROGRESS</option>
+                        <option value="DONE">DONE</option>
+                        <option value="FAILED">FAILED</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_failureDescription">Failure Description</label>
+                    <input type="text" class="form-control" name="failureDescription" id="field_failureDescription"
+                        [(ngModel)]="documentTask.failureDescription" />
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
